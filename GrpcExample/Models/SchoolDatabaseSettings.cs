@@ -1,6 +1,4 @@
-using MongoDbExample.Contracts;
-
-namespace MongoDbExample.Models
+namespace GrpcExample.Models
 {
     public class SchoolDatabaseSettings : ISchoolDatabaseSettings
     {

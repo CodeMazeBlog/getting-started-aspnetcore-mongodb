@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+//  the C# namespace where the interface will be implemented into
+option csharp_namespace = "StudentGrpcService";
+
+message Course {
+    string id = 1;
+    string name = 2;
+    string code = 3;
+}
+
+message Student {
+    string id = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string major = 4;
+    repeated Course courses = 5;
+}
+
+service StudentService {
+    rpc GetStudent(GetStudentRequest) returns (GetStudentResponse);
+    rpc GetStudents(GetStudentsResponse) returns (GetStudentsResponse);
+    rpc CreateOrUpdateStudent (CreateOrUpdateStudentRequest) returns (CreateOrUpdateStudentResponse);
+}
+
+message GetStudentRequest {
+    string id = 1;
+}
+message GetStudentResponse {
+    Student student = 1;
+    string error = 2;
+}
+
+message GetStudentsRequest {}
+message GetStudentsResponse {
+    repeated Student students = 1;
+    string error = 2;
+}
+
+message CreateOrUpdateStudentRequest {
+    Student student = 1;
+}
+message CreateOrUpdateStudentResponse {
+    bool success = 1;
+    string error = 2;
+}

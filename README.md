@@ -1,3 +1,3 @@
-# getting-started-aspnetcore-mongodb
-## https://code-maze.com/getting-started-aspnetcore-mongodb/
-This repository contains the source code for the "Getting Started with ASP.NET Core and MongoDB" article on Code Maze
+# Adding gRPC to an ASP.NET Core with MongoDB
+## https://code-maze.com/adding-grpc-to-an-asp-net-core-project
+This repository contains the source code for the "Adding gRPC to an ASP.NET Core Project" article on Code Maze

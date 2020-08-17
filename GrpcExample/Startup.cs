@@ -1,14 +1,15 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using MongoDbExample.Models;
-using MongoDbExample.Services;
-using MongoDbExample.Contracts;
+using GrpcExample.DataAccess;
+using GrpcExample.Models;
+using GrpcExample.GrpcControllers;
 
-namespace MongoDbExample
+namespace GrpcExample
 {
     public class Startup
     {
@@ -28,9 +29,9 @@ namespace MongoDbExample
             services.AddSingleton<ISchoolDatabaseSettings>(provider =>
                 provider.GetRequiredService<IOptions<SchoolDatabaseSettings>>().Value);
 
-            services.AddSingleton<StudentService>();
-            services.AddSingleton<CourseService>();
-            services.AddControllers();
+            services.AddSingleton<StudentDataAccess>();
+            services.AddGrpc();
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,15 +42,11 @@ namespace MongoDbExample
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapGrpcService<StudentGrpcController>();
             });
         }
     }

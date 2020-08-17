@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.29.0" />
+    <PackageReference Include="MongoDb.Driver" Version="2.10.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\student-service.proto" GrpcServices="Server" />
+  </ItemGroup>
+</Project>

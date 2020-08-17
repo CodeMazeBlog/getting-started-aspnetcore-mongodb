@@ -1,4 +1,4 @@
-﻿namespace MongoDbExample.Contracts
+namespace GrpcExample.Models
 {
     public interface ISchoolDatabaseSettings
     {
