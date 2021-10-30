@@ -26,7 +26,7 @@ namespace MongoDbExample.Controllers
             return Ok(students);
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Student>> GetById(string id)
         {
             var student = await _studentService.GetByIdAsync(id);
